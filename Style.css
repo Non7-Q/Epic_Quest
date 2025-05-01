@@ -1,0 +1,617 @@
+/*Google Fonts*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;600;700&display=swap");
+
+/* Global Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  overflow-x: hidden;
+}
+
+/* Hero Title */
+.hero-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  background: linear-gradient(90deg, #f472b6 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 10px rgba(244, 114, 182, 0.3);
+}
+
+/* Game Feature */
+.game-feature {
+  transition: all 0.3s ease;
+}
+
+.game-feature:hover {
+  transform: translateY(-10px);
+}
+
+/* Button Glow */
+.btn-glow {
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px rgba(139, 92, 246, 0.5);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+  }
+}
+
+/* Floating Animation */
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Parallax Background */
+.parallax-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: twinkle 4s infinite alternate;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
+/* Countdown Timer */
+.countdown-item {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Screenshot Slider */
+.screenshot-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.screenshots {
+  display: flex;
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Nav Link */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(90deg, #f472b6 0%, #8b5cf6 100%);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  bottom: -40px;
+  right: 0;
+  background-color: #1e293b;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.tooltip.show {
+  opacity: 1;
+}
+
+/* Mobile Menu Styles */
+#mobile-menu {
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+#mobile-menu.translate-x-0 {
+  transform: translateX(0);
+}
+
+#mobile-menu-overlay {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  backdrop-filter: blur(3px);
+}
+
+#mobile-menu-overlay.show {
+  opacity: 1;
+}
+
+/* Hamburger Menu Button */
+.hamburger-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.hamburger-icon::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hamburger-icon:hover::before {
+  opacity: 1;
+}
+
+.hamburger-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.8), 0 0 30px rgba(139, 92, 246, 0.4);
+}
+
+.hamburger-lines {
+  width: 24px;
+  height: 18px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.line {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  transition: transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6),
+    opacity 0.25s ease;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.line1 {
+  transform-origin: 0% 0%;
+  animation: glowLine 2s infinite alternate;
+  animation-delay: 0s;
+}
+
+.line2 {
+  opacity: 1;
+  animation: glowLine 2s infinite alternate;
+  animation-delay: 0.5s;
+}
+
+.line3 {
+  transform-origin: 0% 100%;
+  animation: glowLine 2s infinite alternate;
+  animation-delay: 1s;
+}
+
+@keyframes glowLine {
+  from {
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+  }
+  to {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9),
+      0 0 15px rgba(236, 72, 153, 0.7);
+  }
+}
+
+.menu-open .line1 {
+  transform: rotate(45deg) translate(2px, -1px);
+  width: 28px;
+}
+
+.menu-open .line2 {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.menu-open .line3 {
+  transform: rotate(-45deg) translate(2px, 1px);
+  width: 28px;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
+  z-index: 1010;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.8), 0 0 30px rgba(139, 92, 246, 0.4);
+}
+
+.close-btn svg {
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  transition: transform 0.3s ease;
+}
+
+/* Menu Background */
+.menu-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(31, 41, 55, 0.95) 0%,
+    rgba(17, 24, 39, 0.98) 100%
+  );
+  border-left: 2px solid;
+  border-image: linear-gradient(to bottom, #f472b6, #8b5cf6) 1;
+  box-shadow: -5px 0 25px rgba(139, 92, 246, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* Mobile Menu Items Animation */
+@media (max-width: 425px) {
+  #mobile-menu {
+    width: 100%;
+  }
+
+  #mobile-menu .nav-link {
+    font-size: 1.25rem;
+    padding: 0.95rem 0;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateX(20px);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    display: block;
+    letter-spacing: 0.5px;
+  }
+
+  #mobile-menu .nav-link:hover {
+    padding-left: 15px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    color: white;
+    border-bottom-color: rgba(244, 114, 182, 0.5);
+    letter-spacing: 1px;
+  }
+
+  #mobile-menu.translate-x-0 .nav-link {
+    animation: slideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  #mobile-menu.translate-x-0 .nav-link:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  #mobile-menu.translate-x-0 .nav-link:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  #mobile-menu.translate-x-0 .nav-link:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  #mobile-menu.translate-x-0 .nav-link:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+
+  /* Button in mobile menu */
+  #mobile-menu button {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+
+  #mobile-menu.translate-x-0 button {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+  }
+}
+
+/* Prevent scrolling when mobile menu is open */
+body.overflow-hidden {
+  overflow: hidden;
+}
+
+/* Fix hero section padding for small screens to prevent overlap with navigation */
+@media (max-width: 640px) {
+  section.pt-16.sm\:pt-32 {
+    padding-top: 6rem !important; /* Increased padding-top for hero section */
+    padding-left: 1.5rem !important; /* Increased left padding */
+    padding-right: 1.5rem !important; /* Increased right padding */
+  }
+
+  /* Additional adjustments for better spacing on small screens */
+  .hero-title {
+    font-size: 2.5rem !important;
+    margin-top: 1rem;
+  }
+
+  /* Make countdown items responsive */
+  .countdown-item {
+    width: 4.5rem !important;
+    padding: 0.75rem !important;
+  }
+
+  /* Center and resize buttons */
+  .flex.flex-col.sm\:flex-row.gap-4 {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .flex.flex-col.sm\:flex-row.gap-4 button {
+    font-size: 0.95rem !important;
+    padding: 0.65rem 1.5rem !important;
+    max-width: 80% !important;
+  }
+}
+
+/* Specific adjustments for screens between 500px and 640px */
+@media (min-width: 500px) and (max-width: 640px) {
+  /* Make buttons appear side by side */
+  .flex.flex-col.sm\:flex-row.gap-4 {
+    flex-direction: row !important;
+    justify-content: center !important;
+  }
+
+  /* Adjust button width for side-by-side layout */
+  .flex.flex-col.sm\:flex-row.gap-4 button {
+    max-width: none !important;
+    width: auto !important;
+  }
+}
+
+/* Additional adjustments for very small screens (320px and below) */
+@media (max-width: 320px) {
+  section.pt-16.sm\:pt-32 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    text-align: center !important;
+  }
+
+  /* Smaller hero title */
+  .hero-title {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Smaller description text */
+  .text-gray-300.text-xl {
+    font-size: 1rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 90% !important;
+  }
+
+  /* Smaller countdown */
+  .countdown-item {
+    width: 3.5rem !important;
+    padding: 0.5rem !important;
+  }
+
+  .countdown-item .text-3xl {
+    font-size: 1.25rem !important;
+  }
+
+  .countdown-item .text-xs {
+    font-size: 0.65rem !important;
+  }
+
+  /* Countdown heading text */
+  .text-gray-300.mb-4 {
+    font-size: 0.9rem !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Better spacing for buttons */
+  .flex.flex-col.sm\:flex-row.gap-4 button {
+    font-size: 0.85rem !important;
+    padding: 0.5rem 1.25rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 85% !important;
+  }
+}
+
+/* Additional styles for 375px */
+@media (max-width: 375px) {
+  #mobile-menu {
+    width: 100%;
+  }
+
+  #mobile-menu .nav-link {
+    font-size: 1.25rem;
+    padding: 0.95rem 0;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateX(20px);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    display: block;
+    letter-spacing: 0.5px;
+  }
+
+  #mobile-menu .nav-link:hover {
+    padding-left: 15px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    color: white;
+    border-bottom-color: rgba(244, 114, 182, 0.5);
+    letter-spacing: 1px;
+  }
+
+  #mobile-menu.translate-x-0 .nav-link {
+    animation: slideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  #mobile-menu.translate-x-0 .nav-link:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  #mobile-menu.translate-x-0 .nav-link:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  #mobile-menu.translate-x-0 .nav-link:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  #mobile-menu.translate-x-0 .nav-link:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Button in mobile menu */
+  #mobile-menu button {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+
+  #mobile-menu.translate-x-0 button {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+  }
+}
+
+/* Styles for medium-sized screens (between 425px and 768px) */
+@media (min-width: 425px) and (max-width: 768px) {
+  #mobile-menu {
+    width: 70%;
+  }
+
+  #mobile-menu .nav-link {
+    font-size: 1.5rem;
+    padding: 1.25rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+    letter-spacing: 0.75px;
+  }
+
+  #mobile-menu .nav-link:hover {
+    padding-left: 20px;
+    letter-spacing: 1.25px;
+  }
+
+  /* Increase spacing between menu items */
+  #mobile-menu .flex-col.mt-8.space-y-2 {
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+
+  /* Larger button with more padding */
+  #mobile-menu button {
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  /* Increase close button and X icon size */
+  .close-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .close-btn svg {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
